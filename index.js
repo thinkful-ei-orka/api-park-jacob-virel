@@ -26,10 +26,10 @@ function displayResults(responseJson) {
   $('#results').removeClass('hidden');
 }
 
-function displayNationalParks(query, maxResults=10) {
+function displayNationalParks(query, limit=10) {
   const params = {
     q: query,
-    maxResults,
+    limit,
     api_key: myAPI,
   };
   const queryString = formatQueryParams(params)
@@ -48,14 +48,14 @@ console.log(url);
     });
 }
 
-
+ 
 function watchForm() {
   $('form').submit(event => {
     event.preventDefault();
     const searchTerm = $('#js-search-term').val();
-    const maxResults = $('#js-max-results').val();
-    displayNationalParks(searchTerm, maxResults);
+    const limit = $('#js-max-results').val();
+    displayNationalParks(searchTerm, limit);
   });
 }
-  
+   
 $(watchForm);
